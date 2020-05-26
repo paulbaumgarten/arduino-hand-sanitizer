@@ -2,6 +2,7 @@ const int trigPin = 4;
 const int echoPin = 5;
 const int ledPin = 3;
 const int pumpPin = 12;
+const int pumpOnMilliseconds = 310;
 
 long duration;
 int distance;
@@ -31,7 +32,7 @@ void loop() {
   if (distance < 20) {
     digitalWrite(ledPin, HIGH);
     digitalWrite(pumpPin, HIGH);
-    delay(500);
+    delay(pumpOnMilliseconds);
     digitalWrite(ledPin, LOW);
     digitalWrite(pumpPin, LOW);
     delay(1500);    
