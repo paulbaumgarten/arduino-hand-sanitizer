@@ -2,7 +2,7 @@ const int trigPin = 4;
 const int echoPin = 5;
 const int ledPin = 3;
 const int pumpPin = 12;
-const int pumpOnMilliseconds = 310;
+const int pumpOnMilliseconds = 350;
 
 long duration;
 int distance;
@@ -29,7 +29,7 @@ void loop() {
   // Prints the distance on the Serial Monitor
   Serial.print("Distance: ");
   Serial.println(distance);
-  if (distance < 20) {
+  if (distance < 10) {
     digitalWrite(ledPin, HIGH);
     digitalWrite(pumpPin, HIGH);
     delay(pumpOnMilliseconds);
