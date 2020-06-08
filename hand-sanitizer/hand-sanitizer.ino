@@ -2,10 +2,12 @@ const int trigPin = 4;
 const int echoPin = 5;
 const int ledPin = 3;
 const int pumpPin = 12;
-const int pumpOnMilliseconds = 350;
+const int pumpOnMilliseconds = 400;
+const int pumpOnMilliseconds2 = 500;
 
 long duration;
 int distance;
+unsigned long lastPumpTime = 0;
 
 void setup() {
   pinMode(trigPin, OUTPUT);
@@ -32,9 +34,14 @@ void loop() {
   if (distance < 10) {
     digitalWrite(ledPin, HIGH);
     digitalWrite(pumpPin, HIGH);
-    delay(pumpOnMilliseconds);
+    if (lastPumpTime + 5000 < millis()) {
+       delay(pumpOnMilliseconds);
+    } else {
+       delay(pumpOnMilliseconds2);
+    }
     digitalWrite(ledPin, LOW);
     digitalWrite(pumpPin, LOW);
+    lastPumpTime = millis();
     delay(1500);    
   } else {
      delay(200);
